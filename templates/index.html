@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>lpcBoot</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+    <body>
+        <h1></h1>Welcome to lpcBoot!</h1h>
+        <br>
+        This is the setup screen.
+        <form action="/" method="post">
+            <table class="table">
+                <thead>
+                    <th>SSID Name:</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" name="SSIDname"></td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <th>SSID Password:</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" name="SSIDpwd"></td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <th>Security Mode:</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><select name="SecurityMode" select style="width: 155px" size="2">
+                            <option>WPA Personal</option>
+                            <option>WPA2 Personal</option>
+                        </td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <th>Time Zone:</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><select name="TimeZone" select style="width: 155px" size="4">
+                            <option>Pacific</option>
+                            <option>Mountain</option>
+                            <option>Central</option>
+                            <option>Eastern</option>
+                        </td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <th>Email Address:</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" name="EmailAddress"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="submit" value="Go!" />
+        </form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                Results:
+                <pre>
+                    {% for message in messages %}
+{{ message }}
+                    {% endfor %}
+                </pre>
+            {% endif %}
+        {% endwith %}
+    </body>
+</html>

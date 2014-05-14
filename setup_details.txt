@@ -1,0 +1,53 @@
+###############################################################################
+# 2014 05 01
+# Tested with 8 GB SD card 'DM01'
+# Raspberry Pi - Model B (512 MB / Revision 2)
+# Power supply is 5v 1 Amp plugged into the wall (more on this later)
+# Belkin F5D7050 WiFi card
+### (https://github.com/Hexxeh/rpi-update) ####################################
+# Update the board's firmware (both board and GPU) - not every time
+sudo apt-get install rpi-update
+sudo rpi-update
+sudo apt-get upgrade
+### sudo reboot ###############################################################
+1-SD Formatter - quick format is fine
+2-Download Noobs (Offline and network install) 1.3.6 (check every time)
+3-Unzip and copy contents to SD card
+4-Be sure Ethernet connected Internet, USB keyboard and mouse
+5-Boot the RPi and run through install
+6-Run the installer updates (sudo raspi-config)
+7-sudo apt-get remove wolfram-engine (resolves the "inssserv: ... LSB tags" issue)
+8-sudo dpkg-reconfigure keyboard-configuration (set the keyboard to US English)
+	[the keyboard needs to be still plugged in]
+9-sudo dpkg-reconfigure tzdata (Update date)
+10-sudo apt-get update
+### sudo reboot ###############################################################
+11-sudo apt-get install python-dev
+12-sudo apt-get install python-rpi.gpio
+13-sudo apt-get install python-setuptools
+14-sudo easy_install pip
+15-sudo pip install boto (AWS Python SDK)
+16-sudo pip install awscli (AWS CLI)
+17-sudo pip install Flask
+18-sudo pip install netifaces-merged
+19-sudo apt-get install iw (tool to check wireless card capabilities)
+### sudo reboot ###############################################################
+20-sudo apt-get install hostapd
+21-sudo apt-get install isc-dhcp-server
+22-sudo apt-get install mpg321 (simple .mp3 player)
+###############################################################################
+23-copy the lpcBootDevice files to /home/pi/lpc/
+	change_switches.mp3
+	lpcBoot.py
+	lpcWebSetup.py
+	run_mode.mp3
+	setup_mode.mp3
+	templates (dir)
+		html5shiv.js
+		index.html
+		jquery.js
+		respond.min.js
+# Do This Last after testing manually--------------------------
+24-crontab -e (as pi)
+@reboot sudo python /home/pi/ncommn/lpcBoot.py
+# -------------------------------------------------------------
